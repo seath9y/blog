@@ -1,4 +1,3 @@
-// 引入 express 并且创建一个 express 实例赋值给 app
 var express = require('express')
 var app = express()
 var bodyParser = require('body-parser')
@@ -8,8 +7,6 @@ app.use(bodyParser.json())
 // 配置静态文件目录
 app.use(express.static('static'))
 
-
-// 加载 blog.js 模块
 const blog = require('./blog')
 
 
@@ -24,12 +21,7 @@ var sendHtml = function(path, response) {
     })
 }
 
-// / 是用户访问主页的路径
-/*
-现在可以返回这么几个页面
-- 主页, 返回博客列表
-- 详细页面, 返回某个单一的博客页面
-*/
+
 app.get('/', function(request, response) {
     var path = 'blog_index.html'
     sendHtml(path, response)
@@ -43,30 +35,22 @@ app.get('/blog', function(request, response) {
 
 
 
-// ***
-// /api 系列路径都是用来和前端 ajax 交互数据的
+// api
 app.get('/api/blog/all', function(request, response) {
-    // 加载数据并返回
-    console.log(typeof blog, blog, Object.keys(blog))
+    // console.log(typeof blog, blog, Object.keys(blog))
     var blogs = blog.all()
     var r = JSON.stringify(blogs)
     response.send(r)
 })
 
 app.post('/api/blog/add', function(request, response) {
-    // 浏览器发过来的数据我们一般称之为 form (表单)
     var form = request.body
-    // 插入新数据并返回
     var b = blog.new(form)
     var r = JSON.stringify(b)
     response.send(r)
 })
 
-// listen 函数的第一个参数是我们要监听的端口
-// 这个端口是要浏览器输入的
-// 默认的端口是 80
-// 所以如果你监听 80 端口的话，浏览器就不需要输入端口了
-// 但是 1024 以下的端口是系统保留端口，需要管理员权限才能使用
+
 var server = app.listen(8081, function () {
   var host = server.address().address
   var port = server.address().port

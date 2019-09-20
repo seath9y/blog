@@ -4,12 +4,12 @@
         <meta charset="utf-8">
         <title>博客首页</title>
         <style>
-            .gua-blogs {
+            .sx-blogs {
                 width: 300px;
                 margin: 0 auto;
                 text-align: center;
             }
-            .gua-blog-cell {
+            .sx-blog-cell {
                 display: flex;
                 justify-content: space-between;
                 margin: 5px 0;
@@ -18,10 +18,10 @@
         </style>
     </head>
     <body>
-    <h1>你好 gua</h1>
+    <h1>你好</h1>
     <img src=images/doge.gif>
-    <div class="gua-blogs">
-        <!-- <div class="gua-blog-cell">
+    <div class="sx-blogs">
+        <!-- <div class="sx-blog-cell">
             <title>标题</title>
             <div class="">
                 <span>作者</span> @ <time>时间</time>
@@ -31,13 +31,10 @@
     <script>
         var ajax = function(request) {
             /*
-            request 是一个 object, 有如下属性
                 method, 请求的方法, string
                 url, 请求的路径, string
                 data, 请求发送的数据, 如果是 GET 方法则没这个值, string
                 callback, 响应回调, function
-
-            本题不会就放弃, 本题带了一个用法在下方
             */
             var r = new XMLHttpRequest()
             r.open(request.method, request.url, true)
@@ -62,7 +59,7 @@
             var d = new Date(blog.created_time * 1000)
             var time = d.toLocaleString()
             var t = `
-            <div class="gua-blog-cell">
+            <div class="sx-blog-cell">
                 <div class="blog-title">${title}</div>
                 <div class="">
                     <span>${author}</span> @ <time>${time}</time>
@@ -79,8 +76,8 @@
                 var t = blogTemplate(b)
                 html += t
             }
-            // 把数据写入 .gua-blogs 中, 直接用覆盖式写入
-            var div = document.querySelector('.gua-blogs')
+            // 把数据覆盖式写入 .sx-blogs 中
+            var div = document.querySelector('.sx-blogs')
             div.innerHTML = html
         }
 
@@ -90,7 +87,6 @@
                 url: '/api/blog/all',
                 contentType: 'application/json',
                 callback: function(response) {
-                    // 不考虑错误情况(断网/服务器返回错误等等)
                     console.log('响应', response)
                     var blogs = JSON.parse(response)
                     insertBlogAll(blogs)
@@ -102,7 +98,7 @@
         var blogNew = function() {
             var form = {
                 title: "测试标题",
-                author: "gua",
+                author: "sx",
                 content: "测试内容",
             }
             var data = JSON.stringify(form)
