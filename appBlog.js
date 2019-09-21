@@ -8,6 +8,7 @@ app.use(bodyParser.json())
 app.use(express.static('static'))
 
 const blog = require('./blog')
+const comment = require('./comment')
 
 
 var sendHtml = function(path, response) {
@@ -16,7 +17,7 @@ var sendHtml = function(path, response) {
         encoding: 'utf-8'
     }
     fs.readFile(path, options, function(err, data){
-        console.log(`读取的html文件 ${path} 内容是`, data)
+        // console.log(`读取的html文件 ${path} 内容是`, data)
         response.send(data)
     })
 }
@@ -47,6 +48,13 @@ app.post('/api/blog/add', function(request, response) {
     var form = request.body
     var b = blog.new(form)
     var r = JSON.stringify(b)
+    response.send(r)
+})
+
+app.post('/api/comment/add', function(request, response) {
+    var form = request.body
+    var c = comment.new(form)
+    var r = JSON.stringify(c)
     response.send(r)
 })
 

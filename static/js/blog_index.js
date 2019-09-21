@@ -23,15 +23,29 @@ var ajax = function (request) {
 }
 
 var blogTemplate = function (blog) {
+  var id = blog.id
   var title = blog.title
   var author = blog.author
   var d = new Date(blog.created_time * 1000)
   var time = d.toLocaleString()
   var t = `
     <div class="sx-blog-cell">
-        <div class="blog-title">${title}</div>
+        <div>
+          <a class="blog-title" href="/blog?id=${id}" data-id="${id}">
+            ${title}
+          </a>
+        </div>
         <div class="">
             <span>${author}</span> @ <time>${time}</time>
+        </div>
+
+        <div class="blog-comment">
+          <div class="new-comment">
+            <input type="hidden" class="comment-blog-id" value="${id}">
+            <input type="text" class="comment-author" value="${id}">
+            <input type="text" class="comment-comtent" value="${id}">
+            <button>添加评论</button>
+          </div>
         </div>
     </div>
     `
@@ -58,18 +72,19 @@ var blogAll = function () {
     callback: function (response) {
       console.log('响应', response)
       var blogs = JSON.parse(response)
+      window.blogs = blogs
       insertBlogAll(blogs)
     }
   }
   ajax(request)
 }
 
-var blogNew = function () {
-  var form = {
-    title: "测试标题",
-    author: "sx",
-    content: "测试内容",
-  }
+var blogNew = function (form) {
+  // var form = {
+  //   title: "测试标题",
+  //   author: "sx",
+  //   content: "测试内容",
+  // }
   var data = JSON.stringify(form)
   var request = {
     method: 'POST',
@@ -88,7 +103,14 @@ var bindEvents = function (param) {
   //发表新博文事件
   let button = document.querySelector('#id-button-submit')
   button.addEventListener('click', function (event) {
-    console.log('click')
+    
+    let form = {
+      title: document.querySelector('#id-input-title').value,
+      author: document.querySelector('#id-input-author').value,
+      content: document.querySelector('#id-input-content').value
+    }
+    blogNew(form)
+    console.log(form)
   })
 }
 var __main = function () {

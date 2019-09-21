@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "author": "seath",
+    "content": "1",
+    "blog_id": 2
+  },
+  {
+    "id": 2,
+    "author": "seath",
+    "content": "2",
+    "blog_id": 2
+  }
+]
