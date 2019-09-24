@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>博客首页</title>
+        <link rel="stylesheet" href="css/blog_index.css">
+        <link rel="stylesheet" href="images/font/iconfont.css">
+    </head>
+    <body>
+    <div class="index">
+      <header class="header"></header>
+      <hr class="index-hr">
+      <div class="index-content">
+        <div class="index-left">
+          <div class="blogs">
+            <!--
+            <div class="blog-cell">
+              <div>
+                <a class="blog-title" href="/blog?id=${id}" data-id="${id}">
+                  ${title}
+                </a>
+              </div>
+              <div class="">
+                <i class="iconfont icon">&#xe688;</i>
+                <span class="blog-author">${author}</span>
+                <i class="iconfont">&#xe661;</i>
+                <time class="blog-time">${time}</time>
+              </div>
+            </div>
+            -->
+          </div>
+        </div>
+        <div class="index-right">
+          <!-- <div class="right-head">标签分类</div> -->
+          <ul class="tag-list">
+            <li class="li-all active">全部</li>
+            <li class="li-git">git</li>
+            <li class="li-js">js</li>
+            <li class="li-vue">vue</li>
+            <li class="li-node">node</li>
+          </ul>
+        </div>
+      </div>
+      <div class="blog-new">
+        <div class="">
+          <label>
+            标题:
+            <input id="id-input-title" type="text" value="">
+          </label>
+          <br>
+          <label for="">
+            作者:
+            <input id="id-input-author" type="text" value="">
+          </label>
+          <br>
+          <label for="">
+            内容:
+            <textarea id="id-input-content" type="text" value=""></textarea>
+          </label>
+          <br>
+          <button id="id-button-submit">发表新博文</button>
+        </div>
+      </div>
+    </div>
+    <script src="js/blog_index.js"></script>
+</body>
+</html>

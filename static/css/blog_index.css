@@ -10,4 +10,140 @@
   margin: 5px 0;
   outline: solid 1px lightblue;
 } */
+body {
+  overflow-x: hidden;
+  margin: 0;
+  background: #f1f1f1;
+  color: #555;
+  font-size: 12px;
+  font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 20px;
+}
 
+.header {
+  height: 50px;
+}
+.index-content {
+  position: relative;
+}
+
+.index-left {
+  display: inline-block;
+  margin-left: 200px;
+  /* width: 50%; */
+  min-width: 600px;
+  width: 600px;
+}
+
+.blog-cell {
+  position: relative;
+  margin-bottom: 3px;
+  padding: 20px 20px 20px 20px;
+  border-left: solid 4px #fff;
+  background-color: #fff;
+}
+.blog-cell:hover {
+  margin-left: -4px;
+  padding-left: 24px;
+  background-color: #fafff8;
+  border-left-color: #81c53f;
+}
+.div-blog-title {
+  width: 500px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.blog-title {
+  color: #555;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 25px;
+  height: 25px;
+}
+
+a:focus,
+a:hover {
+  color: #4eae30;
+  text-decoration: none;
+}
+
+.blog-content {
+  height: 70px;
+  overflow: hidden;
+  color: #888;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.blog-author {
+  display: inline-block;
+  margin-right: 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 50px;
+}
+
+.blog-bottom {
+  font-size: 13px;
+  line-height: 13px;
+}
+
+.icon {
+  margin-top: 2px;
+  top: 2px;
+}
+
+.index-right {
+  display: inline-block;
+  position: absolute;
+  left: 850px;
+  /* width: 300px; */
+  background: #fff;
+  
+}
+
+.right-head {
+  border-radius: 5px 5px 0 0;
+  position: relative;
+  margin: 0;
+  padding: 11px 15px 14px;
+  border-bottom: 1px solid #eaeaea;
+  background-color: #fbfbfb;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.tag-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+ .tag-list li {
+   padding: 5px 10px;
+  /* display: inline-block; */
+  /* padding: 4px 14px; */
+  /* border: 1px solid #ccc; */
+  /* border-radius: 5px; */
+  background: #fff;
+  /* color: #666; */
+  font-size: 18px;
+  height: 40px;
+  line-height: 40px;
+  background: #FFF;
+  margin-bottom: 1px;
+  font-size: 18px;
+  color: #828282;
+  cursor: pointer;
+  text-align: center;
+}
+
+.tag-list li.active {
+  background: #42b983;
+  color: #fff;
+}

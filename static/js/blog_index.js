@@ -26,33 +26,31 @@ var blogTemplate = function (blog) {
   var id = blog.id
   var title = blog.title
   var author = blog.author
+  var content = blog.content
   var d = new Date(blog.created_time * 1000)
   var time = d.toLocaleString()
   var t = `
-    <div class="sx-blog-cell">
-        <div>
+    <div class="blog-cell">
+        <div class="div-blog-title">
           <a class="blog-title" href="/blog?id=${id}" data-id="${id}">
             ${title}
           </a>
         </div>
-        <div class="">
-            <span>${author}</span> @ <time>${time}</time>
+        <div class="blog-content">
+            ${content}
         </div>
-
-        <div class="blog-comment">
-          <div class="new-comment">
-            <input type="hidden" class="comment-blog-id" value="${id}">
-            <input type="text" class="comment-author" value="${id}">
-            <input type="text" class="comment-comtent" value="${id}">
-            <button>添加评论</button>
-          </div>
+        <div class="blog-bottom">
+          <i class="iconfont icon">&#xe688;</i>
+          <span class="blog-author">${author}</span>
+          <i class="iconfont icon">&#xe661;</i>
+          <time class="blog-time">${time}</time>
         </div>
     </div>
     `
   return t
 }
 
-var insertBlogAll = function (blogs) {
+var insertBlogs = function (blogs) {
   var html = ''
   for (var i = 0; i < blogs.length; i++) {
     var b = blogs[i]
@@ -62,6 +60,8 @@ var insertBlogAll = function (blogs) {
   // 把数据覆盖式写入 blogs 中
   var div = document.querySelector('.blogs')
   div.innerHTML = html
+
+  showContent()
 }
 
 var blogAll = function () {
@@ -70,10 +70,10 @@ var blogAll = function () {
     url: '/api/blog/all',
     contentType: 'application/json',
     callback: function (response) {
-      console.log('响应', response)
+      // console.log('响应', response)
       var blogs = JSON.parse(response)
       window.blogs = blogs
-      insertBlogAll(blogs)
+      insertBlogs(blogs)
     }
   }
   ajax(request)
@@ -110,13 +110,51 @@ var bindEvents = function (param) {
       content: document.querySelector('#id-input-content').value
     }
     blogNew(form)
-    console.log(form)
+    // console.log(form)
   })
 }
+
+// content预览截取
+var showContent = function () {
+  let contents = document.querySelectorAll('.blog-content')
+  for (let i = 0; i < contents.length; i++) {
+    let e = contents[i].innerText
+    if (e.length > 90) {
+      console.log(typeof (e))
+      e = e.slice(0, 75) + ' ...'
+      contents[i].innerText = e
+      console.log(e);
+    }
+  }
+}
+
+//选择标签加载对应blog
+var tagBlog = function (tag) {
+
+}
+
+//标签选择切换
+var changeTag = function () {
+  let tagsList = document.querySelector('.tag-list')
+  tagsList.addEventListener('click', function (e) {
+    var e = e.target
+    let tagsLi = document.querySelectorAll('.tag-list li')
+    for (let i = 0; i < tagsLi.length; i++) {
+      const element = tagsLi[i]
+      element.classList.remove('active')
+    }
+    e.classList.add('active')
+    if (e.innerText == 'git' || 'js' || 'vue' || 'node' || '全部') {
+      tagBlog(e.innerText)
+    }
+  })
+}
+
 var __main = function () {
   // 载入博客列表
   blogAll()
   bindEvents()
+  changeTag()
 }
 
 __main()

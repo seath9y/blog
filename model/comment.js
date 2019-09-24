@@ -1,7 +1,7 @@
 var fs = require('fs')
 
 
-var filePath = 'comment.json'
+var filePath = 'db/comment.json'
 
 
 // 用来存储 Comment 数据的对象

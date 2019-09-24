@@ -1,7 +1,7 @@
 var fs = require('fs')
 
 
-var blogFilePath = 'blog.json'
+var blogFilePath = 'db/blog.json'
 
 
 // 用来存储 Blog 数据的对象
