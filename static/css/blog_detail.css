@@ -15,22 +15,123 @@ body {
 .blog-detail {
   width: 70%;
   min-width: 600px;
-  background: #fff;
   margin: 0 auto;
 }
 
-.blog-title {
+.comments {
+  background: #fff;
+  padding: 1em;
+  margin-bottom: 2em;
+}
+
+.blog-title,
+.comments-title {
   font-size: 28px;
   line-height: 250%;
   text-align: center;
   margin: 0;
+  color: #556677;
+  border-bottom: 1px solid #d3d3d3;
 }
 
 .blog-author,
 .blog-time,
 .blog-tag,
+.blog-htmlcontent,
+p {
+  margin-top: 1em;
+  line-height: 180%;
+  /* margin-left: 0.8em; */
+}
 .blog-content {
+  background: #fff;
+  padding: 1em;
+  margin-bottom: 2em;
+  color: #556677;
+  font-size: 16px;
+}
+
+.blog-comments {
+  background: #fff;
+  margin-bottom: 2em;
+  color: #556677;
+  font-size: 16px;
+}
+
+.comment-cell {
+  border-bottom: 1px solid #d3d3d3;
+  padding: 1em;
+  margin: 0 0.5em;
+}
+
+.comment-author {
+  color:rgb(43, 43, 43);
+  font-weight:700;
+}
+
+.comment-content {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-align: left;
+  text-decoration: none;
+  border-bottom: none;
+  font-weight: normal;
+  font-style: normal;
+  border: none;
+  color: #111111;
   margin-top: 1em;
   line-height: 180%;
   margin-left: 0.8em;
+}
+
+.comment-time {
+  position: relative;
+  margin-top: 1em;
+  padding-bottom: 1em;
+}
+.comment-time time {
+  position: absolute;
+  right: 0;
+}
+
+.new-comment {
+  background: #fff;
+  margin-bottom: 2em;
+  padding-bottom: 0.1em;
+}
+
+
+#new-comment-author {
+  line-height: 16px;
+  width: 600px;
+  height: 30px;
+  padding: 0 9px;
+  line-height: 28px;
+  font-size: 14px;
+  color: #333;
+  background-color: #FFF;
+  border: 1px solid #ccc;
+  border-right-color: #ccc;
+  border-bottom-color: #ccc;
+    margin-bottom: 15px;
+    display: inline-block;
+  width: 300px;
+  margin-right: 50px;
+  /* margin-left: 1em; */
+}
+
+#id-comment-add {
+    margin-bottom: 1em;
+  color: #fff;
+  cursor: pointer;
+  width: 10em;
+  padding: 0.2em 3em;
+  text-align: center;
+  border: 1px solid #d3d3d3;
+  margin-top: 0;
+  line-height: 1.2;
+  padding: 0.4em 0.3em;
+  background-color: #42b983;
+  font-size: 16px;
 }

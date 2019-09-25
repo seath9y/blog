@@ -29,7 +29,7 @@ body {
 
 .index-left {
   display: inline-block;
-  margin-left: 200px;
+  margin-left: 400px;
   /* width: 50%; */
   min-width: 600px;
   width: 600px;
@@ -106,7 +106,7 @@ a:hover {
 .index-right {
   display: inline-block;
   position: absolute;
-  left: 850px;
+  left: 1100px;
   /* width: 300px; */
   background: #fff;
   
@@ -156,8 +156,10 @@ a:hover {
 
 
 .blog-new {
-  margin-left: 200px;
+  margin-left: 350px;
   width: 718px;
+  margin-top: 65px;
+  margin-bottom: 65px;
   /* padding: 20px; */
   /* background: #eee; */
 }
@@ -211,9 +213,20 @@ a:hover {
 }
 
 #id-button-submit {
-  padding: 7px 14px;
-  font-size: 12px;
-  background: #42b983;
   color: #fff;
-  width: 25px;
+  cursor: pointer;
+  width: 10em;
+  padding: 0.2em 3em;
+  text-align: center;
+  border: 1px solid #d3d3d3;
+  margin-top: 0;
+  line-height: 1.2;
+  padding: 0.4em 0.3em;
+  background-color: #42b983;
+  font-size: 16px;
+}
+
+.blog-new-top {
+  padding-left: 30px;
+  
 }

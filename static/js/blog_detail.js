@@ -78,7 +78,6 @@ var blogContentTemplate = function (blog) {
       <h1 class="blog-title" href="/blog?id=${id}" data-id="${id}">
         ${title}
       </h1>
-      <hr>
       <div class="blog-author">
         <span>作者：${author}</span>
       </div>
@@ -88,8 +87,7 @@ var blogContentTemplate = function (blog) {
       <div class="blog-tag">
         <time>标签：${tag}</time>
       </div>
-      <p class="blog-content">
-        <span>${htmlcontent}</span>
+      ${htmlcontent}
       </p>
     </div>
     `
@@ -102,14 +100,19 @@ var blogCommentTemplate = function (comment) {
   var content = comment.content
   var d = new Date(comment.created_time * 1000)
   var time = d.toLocaleString()
+  var converter = new showdown.Converter() //初始化转换器
+  var htmlcontent = converter.makeHtml(content) //将MarkDown转为html格式的内容
   var t = `
     <div class="comment-cell">
-        <div class="">
-            <span>${author}</span> @ <time>${time}</time>
-        </div>
-        <div class="">
-            <span>${content}</span>
-        </div>
+      <div class="comment-author">
+        <span>${author}</span> 说：
+      </div>
+      <div class="comment-content">
+        <span>${htmlcontent}</span>
+      </div>
+      <div class="comment-time">
+        <time>${time}</time>
+      </div>
     </div>
     `
   return t
@@ -130,7 +133,13 @@ var insertComment = function (comments) {
     var t = blogCommentTemplate(b)
     html += t
   }
-  // 把数据覆盖式写入 blogs 中
+  if (comments.length == 0) {
+    html += `
+      <div class="comment-content">
+        <span>暂无评论</span>
+      </div>
+    `
+  }
   var div = document.querySelector('.blog-comments')
   div.innerHTML = html
 }
@@ -152,12 +161,11 @@ var commentNew = function (form) {
 
 
 var bindEvents = function (param) {
-  //发表新博文事件
   let button = document.querySelector('#id-comment-add')
   button.addEventListener('click', function (event) {
     let form = {
       author: document.querySelector('#new-comment-author').value,
-      content: document.querySelector('#new-comment-comtent').value,
+      content: document.querySelector('#id-commentContent').value,
       blog_id: parseInt(window.location.search.slice(-1))
     }
     if (form.content == "") {
@@ -168,11 +176,19 @@ var bindEvents = function (param) {
       commentNew(form)
     }
     console.log(form)
+    location.reload()
   })
 }
+var mditorConfig = function () {
+  Mditor.fromTextarea(document.getElementById('id-commentContent'))
+  mditor.split = false
+  mditor.height = '200px'
+}
 
+// var s = Mditor.fromTextarea(document.getElementById('id-commentContent'))
 var __main = function () {
   init()
   bindEvents()
+  mditorConfig()
 }
 __main()

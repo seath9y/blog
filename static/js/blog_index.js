@@ -117,7 +117,15 @@ var bindEvents = function (param) {
       content: document.querySelector('#id-input-content').value,
       tag: document.querySelector('#id-input-tag').value
     }
-    blogNew(form)
+    if (form.title == "") {
+      alert('请输入标题')
+    } else if (form.author == "") {
+      alert('请输入作者')
+    } else if (form.content == "") {
+      alert('请输入内容')
+    } else {
+      blogNew(form)
+    }
     // console.log(form)
     location.reload()
   })
