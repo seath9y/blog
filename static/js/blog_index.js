@@ -27,8 +27,14 @@ var blogTemplate = function (blog) {
   var title = blog.title
   var author = blog.author
   var content = blog.content
+  // var content = marked(blog.content)
+  var tag = blog.tag
   var d = new Date(blog.created_time * 1000)
   var time = d.toLocaleString()
+
+  var converter = new showdown.Converter() //初始化转换器
+  var htmlcontent = converter.makeHtml(content) //将MarkDown转为html格式的内容
+
   var t = `
     <div class="blog-cell">
         <div class="div-blog-title">
@@ -37,13 +43,15 @@ var blogTemplate = function (blog) {
           </a>
         </div>
         <div class="blog-content">
-            ${content}
+            ${htmlcontent}
         </div>
         <div class="blog-bottom">
           <i class="iconfont icon">&#xe688;</i>
           <span class="blog-author">${author}</span>
           <i class="iconfont icon">&#xe661;</i>
           <time class="blog-time">${time}</time>
+          <i class="iconfont icon">&#xe62c;</i>
+          <time class="blog-tag">${tag}</time>
         </div>
     </div>
     `
@@ -102,15 +110,16 @@ var blogNew = function (form) {
 var bindEvents = function (param) {
   //发表新博文事件
   let button = document.querySelector('#id-button-submit')
-  button.addEventListener('click', function (event) {
-    
+  button.addEventListener('click', function (event) {    
     let form = {
       title: document.querySelector('#id-input-title').value,
       author: document.querySelector('#id-input-author').value,
-      content: document.querySelector('#id-input-content').value
+      content: document.querySelector('#id-input-content').value,
+      tag: document.querySelector('#id-input-tag').value
     }
     blogNew(form)
     // console.log(form)
+    location.reload()
   })
 }
 
@@ -120,17 +129,24 @@ var showContent = function () {
   for (let i = 0; i < contents.length; i++) {
     let e = contents[i].innerText
     if (e.length > 90) {
-      console.log(typeof (e))
       e = e.slice(0, 75) + ' ...'
       contents[i].innerText = e
-      console.log(e);
     }
   }
 }
 
 //选择标签加载对应blog
 var tagBlog = function (tag) {
-
+  if (tag == '全部') {
+    insertBlogs(window.blogs)
+  } else {
+    var blogs = window.blogs.filter(function (item, index) {
+      if (item.tag == tag) {
+        return true
+      }
+    })
+    insertBlogs(blogs)
+  }
 }
 
 //标签选择切换
@@ -150,11 +166,21 @@ var changeTag = function () {
   })
 }
 
+
+var mditorConfig = function () {
+  Mditor.fromTextarea(document.getElementById('id-input-content'))
+}
+
 var __main = function () {
   // 载入博客列表
   blogAll()
   bindEvents()
   changeTag()
+  mditorConfig()
 }
-
 __main()
+
+// var editor = new Mditor(document.getElementById('id-input-content'), {
+//   //自定义显示效果class
+//   previewClass: 'article'
+// });

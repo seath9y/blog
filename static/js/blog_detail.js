@@ -61,26 +61,36 @@ var init = function () {
   ajax(request)
 }
 
-var blogContentTemplate = function (comment) {
-  var id = comment.id
-  var title = comment.title
-  var author = comment.author
-  var content = comment.content
-  var d = new Date(comment.created_time * 1000)
+var blogContentTemplate = function (blog) {
+  var id = blog.id
+  var title = blog.title
+  var author = blog.author
+  var tag = blog.tag
+  var d = new Date(blog.created_time * 1000)
   var time = d.toLocaleString()
+
+  var content = blog.content
+  var converter = new showdown.Converter() //初始化转换器
+  var htmlcontent = converter.makeHtml(content) //将MarkDown转为html格式的内容
+
   var t = `
-    <div class="sx-blog-cell">
-        <div>
-          <div class="blog-title" href="/blog?id=${id}" data-id="${id}">
-            ${title}
-          </div>
-        </div>
-        <div class="">
-            <span>${author}</span> @ <time>${time}</time>
-        </div>
-        <div class="">
-            <span>${content}</span>
-        </div>
+    <div class="blog">
+      <h1 class="blog-title" href="/blog?id=${id}" data-id="${id}">
+        ${title}
+      </h1>
+      <hr>
+      <div class="blog-author">
+        <span>作者：${author}</span>
+      </div>
+      <div class="blog-time">
+        <time>日期：${time}</time>
+      </div>
+      <div class="blog-tag">
+        <time>标签：${tag}</time>
+      </div>
+      <p class="blog-content">
+        <span>${htmlcontent}</span>
+      </p>
     </div>
     `
   return t
@@ -93,7 +103,7 @@ var blogCommentTemplate = function (comment) {
   var d = new Date(comment.created_time * 1000)
   var time = d.toLocaleString()
   var t = `
-    <div class="sx-comment-cell">
+    <div class="comment-cell">
         <div class="">
             <span>${author}</span> @ <time>${time}</time>
         </div>

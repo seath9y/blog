@@ -9,6 +9,7 @@ const ModelBlog = function(form) {
   this.title = form.title || ''
   this.author = form.author || ''
   this.content = form.content || ''
+  this.tag = form.tag || ''
   // 生成一个 unix 时间
   this.created_time = Math.floor(new Date() / 1000)
 }

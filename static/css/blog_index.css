@@ -71,25 +71,31 @@ a:hover {
 }
 
 .blog-content {
-  height: 70px;
+  height: 50px;
   overflow: hidden;
+  margin-bottom: 20px;
   color: #888;
   font-size: 14px;
   line-height: 24px;
 }
 
-.blog-author {
+.blog-author,.blog-tag{
   display: inline-block;
   margin-right: 20px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
   width: 50px;
+  height: 15px;
+  line-height: 15px;
+}
+
+.blog-time {
+  margin-right: 50px;
 }
 
 .blog-bottom {
   font-size: 13px;
-  line-height: 13px;
 }
 
 .icon {
@@ -146,4 +152,68 @@ a:hover {
 .tag-list li.active {
   background: #42b983;
   color: #fff;
+}
+
+
+.blog-new {
+  margin-left: 200px;
+  width: 718px;
+  /* padding: 20px; */
+  /* background: #eee; */
+}
+
+.new-head {
+  padding-bottom: 20px;
+  color: #555;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 25px;
+  height: 25px;
+}
+
+#id-input-title,
+#id-input-author,
+#id-input-tag,
+#id-input-content {
+  line-height: 16px;
+  width: 600px;
+  height: 30px;
+  padding: 0 9px;
+  line-height: 28px;
+  font-size: 14px;
+  color: #333;
+  background-color: #FFF;
+  border: 1px solid #ccc;
+  border-right-color: #ccc;
+  border-bottom-color: #ccc;
+  margin-bottom: 10px;
+}
+#id-input-author {
+  display: inline-block;
+  width: 300px;
+  margin-right: 50px;
+}
+#id-input-tag {
+  display: inline-block;
+  width: 100px;
+}
+.tags {
+  padding: 0 9px;
+  line-height: 28px;
+  font-size: 14px;
+  color: #333;
+}
+#id-input-content {
+  margin: 0px;
+  width: 620px;
+  height: 156px;
+}
+
+#id-button-submit {
+  padding: 7px 14px;
+  font-size: 12px;
+  background: #42b983;
+  color: #fff;
+  width: 25px;
 }

@@ -18,6 +18,13 @@
       "font_class": "shijian",
       "unicode": "e661",
       "unicode_decimal": 58977
+    },
+    {
+      "icon_id": "6572561",
+      "name": "标签",
+      "font_class": "biaoqian",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
     }
   ]
 }

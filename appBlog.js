@@ -48,6 +48,8 @@ app.get('/api/blog/all', function(request, response) {
 app.post('/api/blog/add', function(request, response) {
     var form = request.body
     var b = blog.new(form)
+    console.log(form.content);
+    
     var r = JSON.stringify(b)
     response.send(r)
 })

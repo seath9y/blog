@@ -1,0 +1,36 @@
+body {
+  overflow-x: hidden;
+  margin: 0;
+  background: #f1f1f1;
+  color: #555;
+  font-size: 12px;
+  font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 20px;
+}
+
+.header {
+  height: 50px;
+}
+
+.blog-detail {
+  width: 70%;
+  min-width: 600px;
+  background: #fff;
+  margin: 0 auto;
+}
+
+.blog-title {
+  font-size: 28px;
+  line-height: 250%;
+  text-align: center;
+  margin: 0;
+}
+
+.blog-author,
+.blog-time,
+.blog-tag,
+.blog-content {
+  margin-top: 1em;
+  line-height: 180%;
+  margin-left: 0.8em;
+}
