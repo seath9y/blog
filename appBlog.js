@@ -35,6 +35,23 @@ app.get('/blog', function(request, response) {
     sendHtml(path, response)
 })
 
+app.get('/gallery', function(request, response) {
+    // console.log('query', request.query)
+    var path = 'blog_gallery.html'
+    sendHtml(path, response)
+})
+
+app.get('/bozhu', function(request, response) {
+    // console.log('query', request.query)
+    var path = 'blog_bozhu.html'
+    sendHtml(path, response)
+})
+app.get('/message', function(request, response) {
+    // console.log('query', request.query)
+    var path = 'blog_message.html'
+    sendHtml(path, response)
+})
+
 
 
 // api

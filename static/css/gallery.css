@@ -1,0 +1,87 @@
+
+
+.gallery p{
+    font-size: 30px ;
+    text-align: center;
+    color:#800080;
+   
+}
+.gallery .col1{
+    margin:20px;
+    overflow: hidden;   
+}
+.gallery .row  img{
+    transition: all 1s;
+    width:100%;
+    height:100%;
+   
+}
+.gallery .row img:hover{
+    transform:scale(1.3,1.3);   
+}
+
+
+/*导航栏*/
+.gallery-header {
+  height: 63px;
+  border-bottom: 3px solid #888;
+  margin-bottom: 20px;
+}
+
+.header2 {
+  height: 100%;
+  width: 92%;
+  float: right;
+}
+
+.gallery-nav {
+  margin: 0 0;
+  font-size: 20px;
+}
+
+.nav1>li {
+  float: left;
+  width: 150px;
+  list-style: none;
+  text-align: center;
+
+}
+
+.nav2>li {
+  width: 150px;
+
+  float: right;
+  list-style: none;
+}
+
+.header2 a {
+  text-decoration: none;
+  color: #000;
+  display: block;
+  text-align: center;
+  line-height: 60px;
+
+}
+
+.header2>.gallery-nav>li>a:hover,
+.header2>.gallery-nav>li>a:focus {
+  border-bottom: 3px solid #42b983;
+  background-color: #DDD;
+  color: #000;
+  text-decoration: none;
+}
+
+/**/
+
+.code>img {
+  display: none;
+}
+
+.code:hover img {
+  display: block;
+  position: absolute;
+  top: 90px;
+  right: 20px;
+  border: 1px solid #ccc;
+  z-index: 1;
+}

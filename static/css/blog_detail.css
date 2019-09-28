@@ -135,3 +135,65 @@ p {
   background-color: #42b983;
   font-size: 16px;
 }
+
+/*导航栏*/
+.header {
+  height: 60px;
+  border-bottom: 3px solid #888;
+  margin-bottom: 20px;
+}
+
+.header2 {
+  height: 100%;
+  width: 92%;
+  float: right;
+}
+
+.nav {
+  margin: 0 0;
+  font-size: 20px;
+}
+
+.nav1>li {
+  float: left;
+  width: 150px;
+  list-style: none;
+  text-align: center;
+
+}
+
+.nav2>li {
+  width: 150px;
+
+  float: right;
+  list-style: none;
+}
+
+.header2 a {
+  text-decoration: none;
+  color: #000;
+  display: block;
+  text-align: center;
+  line-height: 60px;
+
+}
+
+.header2>.nav>li>a:hover,
+.header2>.nav>li>a:focus {
+  border-bottom: 3px solid #42b983;
+  background-color: #DDD;
+}
+
+/**/
+
+.code>img {
+  display: none;
+}
+
+.code:hover img {
+  display: block;
+  position: absolute;
+  top: 90px;
+  right: 20px;
+  border: 1px solid #ccc;
+}

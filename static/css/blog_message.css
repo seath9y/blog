@@ -1,0 +1,53 @@
+body {
+    
+    overflow-x: hidden;
+    margin: 0;
+    background:  url(../images/1.jpg) no-repeat ;
+    background-size:100% 100%;
+    color: #555;
+    font-size: 12px;
+    font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /*line-height: 20px;*/
+    background: #f1f1f1;
+  }
+  
+  .new-head {
+    font-size: 30px;
+   
+  }
+
+  .wzh2{
+    font-size: 20px;
+  }
+
+  #id-input-content {
+    margin-top:60px;
+    
+  }
+  #id-message-submit{
+    
+
+    color: #fff;
+    cursor: pointer;
+    width: 10em;
+    padding: 0.2em 3em;
+    text-align: center;
+    border: 1px solid #d3d3d3;
+    margin-top: 0;
+    line-height: 1.2;
+    padding: 0.4em 0.3em;
+    background-color: #42b983;
+    font-size: 16px;
+  }
+    
+  
+
+  .message-cell {
+      border: 1px solid #555;
+      margin:10px 10px;
+      height:40px;
+  }
+
+  .mditor {
+      margin: 0 auto;
+  }

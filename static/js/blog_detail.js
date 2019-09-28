@@ -50,7 +50,7 @@ var init = function () {
       // console.log('响应', response)
       var blogs = JSON.parse(response)
       window.blogs = blogs
-      let blogId = window.window.location.search.slice(-1)
+      let blogId = window.location.search.slice(-1)
       let blog = blogs[blogId - 1]
       window.blog = blog
       insertBlog(blog)
@@ -153,7 +153,8 @@ var commentNew = function (form) {
     contentType: 'application/json',
     callback: function (response) {
       console.log('响应', response)
-      var res = JSON.parse(response)
+      // var res = JSON.parse(response)
+      location.reload()
     }
   }
   ajax(request)
@@ -176,7 +177,6 @@ var bindEvents = function (param) {
       commentNew(form)
     }
     console.log(form)
-    location.reload()
   })
 }
 var mditorConfig = function () {
@@ -185,7 +185,7 @@ var mditorConfig = function () {
   mditor.height = '200px'
 }
 
-// var s = Mditor.fromTextarea(document.getElementById('id-commentContent'))
+// var mditor = Mditor.fromTextarea(document.getElementById('id-commentContent'))
 var __main = function () {
   init()
   bindEvents()

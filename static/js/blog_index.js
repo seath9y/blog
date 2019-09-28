@@ -88,6 +88,8 @@ var blogAll = function () {
 }
 
 var blogNew = function (form) {
+  console.log(form);
+  
   // var form = {
   //   title: "测试标题",
   //   author: "sx",
@@ -101,7 +103,8 @@ var blogNew = function (form) {
     contentType: 'application/json',
     callback: function (response) {
       console.log('响应', response)
-      var res = JSON.parse(response)
+      // var res = JSON.parse(response)
+      location.reload()
     }
   }
   ajax(request)
@@ -124,10 +127,12 @@ var bindEvents = function (param) {
     } else if (form.content == "") {
       alert('请输入内容')
     } else {
+      console.log('form', form);
+      
       blogNew(form)
+      // location.reload()
     }
     // console.log(form)
-    location.reload()
   })
 }
 
@@ -161,6 +166,8 @@ var tagBlog = function (tag) {
 var changeTag = function () {
   let tagsList = document.querySelector('.tag-list')
   tagsList.addEventListener('click', function (e) {
+        // console.log(e.target.innerText)
+
     var e = e.target
     let tagsLi = document.querySelectorAll('.tag-list li')
     for (let i = 0; i < tagsLi.length; i++) {
